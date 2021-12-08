@@ -1,23 +1,17 @@
-import * as React from "react";
-
-enum Method {
-  GET = "GET",
-  POST = "POST",
-  PUT = "PUT",
-  PATCH = "PATCH",
-  DELETE = "DELETE",
-}
+import { useAppStateReducer } from "../AppState/Context";
+import { Method } from "../AppState/Reducer";
 
 const UrlBar = () => {
-  const [method, setMethod] = React.useState(Method.GET);
-  const [url, setUrl] = React.useState("");
+  const [{ method, url }, dispatch] = useAppStateReducer();
 
   return (
     <div className="w-full flex flex-row justify-center items-center">
       <select
-        onChange={(event) => setMethod(event.target.value as Method)}
+        onChange={(event) =>
+          dispatch({ type: "SET_METHOD", method: event.target.value as Method })
+        }
         value={method}
-        className="bg-blue-500 w-24 text-white rounded-l-full py-1 px-2 pl-2 my-4 ml-4 h-10"
+        className="bg-blue-500 w-24 text-white rounded-l-full py-1 px-2 pl-2 h-10 appearance-none outline-none shadow-sm hover:shadow"
       >
         <option value={Method.GET}>GET</option>
         <option value={Method.POST}>POST</option>
@@ -27,11 +21,13 @@ const UrlBar = () => {
       </select>
       <input
         value={url}
-        onChange={(event) => setUrl(event.target.value)}
-        className="w-full border-t border-b py-1 px-2 outline-none my-4 h-10"
+        onChange={(event) =>
+          dispatch({ type: "SET_URL", url: event.target.value })
+        }
+        className="w-full border-t border-b py-1 px-2 outline-none h-10 shadow-sm hover:shadow"
       />
       <button
-        className="my-4 mr-4 bg-blue-500 w-24 text-white px-4 py-2 rounded-r-full h-10"
+        className="bg-blue-500 w-24 text-white px-4 py-2 rounded-r-full h-10 outline-none shadow-sm hover:shadow"
         onClick={() => {
           fetch(url, {
             method,
