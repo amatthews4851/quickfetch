@@ -1,10 +1,19 @@
-# neutralinojs-minimal
-The simplest template for a Neutralinojs app. It's possible to use your favorite frontend framework using the following steps.
+# QuickFetch: The fastest app to make an http request from
 
-- Create a new project using your favorite frontend framework. (Eg: `ng new --directory .`)
-- Make the frontend framework's build path and Neutralino config's `url`, `resourcesPath` the same.
-- Build with the correct base href.
+This is a create-react-app made for running on Neutralino.
 
-# Icon credits
+## npm run start
 
-- `trayIcon.png` - Made by [Freepik](https://www.freepik.com) and downloaded from [Flaticon](https://www.flaticon.com)
+This runs the CRA app in the browser
+
+## npm run build
+
+This will build to the resources folder, and is required to run the Neutralino app
+
+## npm run neutralino
+
+This starts the Neutralino app
+
+## Distributing
+
+[Use this stack overflow link](https://apple.stackexchange.com/questions/224394/how-to-make-a-mac-os-x-app-with-a-shell-script)
